@@ -59,8 +59,8 @@ router.post('/', (req, res) => {
 	const { id } = req.params;
 	const body = req.body;
 	Posts.insert(body, id)
-		.then((body) => {
-			!(body.title || body.contents)
+		.then(() => {
+			body.title || body.contents
 				? res.status(201).json(body)
 				: res.status(400).json({
 						errorMessage: 'Please provide title and contents for the post.',
@@ -103,11 +103,11 @@ router.post('/:id/comments', (req, res) => {
 // UPDATE post
 router.put('/:id', (req, res) => {
 	const { id } = req.params;
-	const body = req.body;
-	Posts.update(id, body)
+	const post = req.body;
+	Posts.update(id, post)
 		.then(() => {
 			Posts.findById(id).then((post) => {
-				body.title || body.contents
+				post.title === undefined || post.contents === undefined
 					? res.status(200).json(post)
 					: res.status(400).json({
 							error: 'Please provide title and contents for the post.',
@@ -143,7 +143,7 @@ router.delete('/:id', (req, res) => {
 				});
 			})
 			.catch((error) => {
-				console.log('error from removing post', error);
+				console.log(error);
 				res.status(500).json({ error: 'The post could not be removed.' });
 			});
 	});
