@@ -32,7 +32,7 @@ export const Posts = () => {
 			})
 			.catch((err) => {
 				console.log(`Added no posts!`, err.response);
-			});
+			}); 
 	};
 
 	const deletePost = (post) => {

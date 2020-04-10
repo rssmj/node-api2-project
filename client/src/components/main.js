@@ -12,7 +12,7 @@ export const Main = () => {
 		<div className='Main'>
 			<>
 				<div classname='main-container' onClick={handleClick}>
-					<h1 className='bleep'>[-_-]</h1>
+					<h1 className='bleep'>[-_[-__-]_-]</h1>
 					<p className='enter'>enter</p>
 				</div>
 			</>
