@@ -12,7 +12,7 @@ export const Posts = () => {
 
 	useEffect(() => {
 		axios
-			.get('http://localhost:8888/api/posts')
+			.get('https://ndap2prj.herokuapp.com/api/posts')
 			.then((res) => {
 				console.log(res.data);
 				setPosts(res.data);
@@ -24,7 +24,7 @@ export const Posts = () => {
 
 	const addPost = () => {
 		axios
-			.post('http://localhost:8888/api/posts', post)
+			.post('https://ndap2prj.herokuapp.com/api/posts', post)
 			.then((res) => {
 				console.log(res.data);
 				setPost(initialPost);
@@ -37,7 +37,7 @@ export const Posts = () => {
 
 	const deletePost = (post) => {
 		axios
-			.delete(`http://localhost:8888/api/posts/${post.id}`)
+			.delete(`https://ndap2prj.herokuapp.com/api/posts/${post.id}`)
 			.then(() => {
 				setPosts(posts.filter((item) => item.id !== post.id));
 			})
